@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function HeaderForm() {
-  const params = useParams<{ tag: string; item: string }>();
+  const params = useParams<{ user: string; year: string }>();
   const { user, year } = params;
   const currentYear = new Date().getFullYear();
   const selectYear = [];
