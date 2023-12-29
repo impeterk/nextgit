@@ -24,7 +24,7 @@ export default async function ContributionsTable({ user, year }: UserYear) {
                   key={day?.day}
                   data-level={day?.level || null}
                   style={styles}
-                  className="group relative transition-all duration-500 "
+                  className="group relative transition-all duration-500 w-4 h-4 m-2 border border-background"
                 >
                   <span className="hidden group-hover:flex  transition-all duration-500  opacity-0 group-hover:opacity-100 absolute z-50 -translate-y-full text-xs bg-background rounded gap-2 -translate-x-1/3 px-2 py-1">
                     <span>{day?.count} </span>

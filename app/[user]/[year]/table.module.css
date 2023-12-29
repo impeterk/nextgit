@@ -1,9 +1,3 @@
-td {
-  @apply w-4 h-4 m-2 border border-background;
-}
-tr {
-  @apply bg-background;
-}
 td[data-level="0"] {
   @apply bg-muted;
 }

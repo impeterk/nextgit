@@ -1,7 +1,7 @@
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    width: full;
-    max-width: 1280px;
-    margin-inline: auto;
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: full;
+  max-width: 1280px;
+  margin-inline: auto;
 }
