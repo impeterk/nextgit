@@ -1,4 +1,7 @@
-import getContributions from "@/app/lib/contributions";
+export const runtime = 'edge'
+
+import {getContributions} from "@/app/lib/contributions";
+import { NextResponse } from "next/server";
 
 export async function GET(
     request: Request,
@@ -8,5 +11,5 @@ export async function GET(
 
     let res = await getContributions({user, year})
 
-    return Response.json(res)
+    return NextResponse.json(res)
   }

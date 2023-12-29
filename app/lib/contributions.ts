@@ -5,15 +5,15 @@ export interface UserYear {
     year?: string
 }
 
-export default async function getContributions({user = 'impeterk', year = '2023'}: UserYear){
+export async function getContributions({user = 'impeterk', year = '2023'}: UserYear){
     const html = await getRawContributions({user, year})
-    parseContributions(html)
+    return parseContributions(html)
 
-    return html
 }
 
+
 async function getRawContributions({user = 'impeterk', year = '2023'}: UserYear): Promise<string> {
-    const res = await fetch(`https://github.com/users/${user}/contributions?from=${year}-12-01&to=${year}-12-31`)
+    const res = await fetch(`https://github.com/users/${user}/contributions?from=${year}-12-01&to=${year}-12-31`, )
  
   if (!res.ok) {
     throw new Error(`Failed to fetch data: ${res.status}`)
@@ -23,6 +23,10 @@ async function getRawContributions({user = 'impeterk', year = '2023'}: UserYear)
 
 function parseContributions(html: string) {
     const {document} = parseHTML(html)
+
+    // total constributions
+    const totalContributions = document.querySelector<HTMLHeadingElement>('h2')?.innerText.split(' ')[1]
+    const calendar = document.querySelectorAll<HTMLElement>('tool-tip')
 
     const rows = document.querySelectorAll('tbody > tr')
 
@@ -35,8 +39,45 @@ function parseContributions(html: string) {
         const currentRow = []
 
         for (const day of days){
-            console.log(day.innerText)
+            const dayId = day.id
+            let date = day.getAttribute('data-date')
+            if (date) {
+                // @ts-ignore
+                for (const entry of calendar) {
+                    const entryId = entry.getAttribute('for')
+                    
+                    let count = entry.innerText.split(' ')[0]
+                    count === 'No' ? count = 0 : count = Number(count)
+                    if (entryId === dayId) {
+                        
+                        date = date.split('-')
+                        
+                        const contribution: {
+                            count: number,
+                            day: string,
+                            month: string,
+                            year: string,
+                            level: number
+                        } = {
+                            count,
+                            day: date[2],
+                            month: date[1],
+                            year: date[0],
+                            level: day.dataset.level!
+                        }
+                        currentRow.push(contribution)
+                    }
+                }
+            }  else {
+                currentRow.push(null)
+            }
         }
+        contributions.push(currentRow)
+    }
+    const response = {
+        totalContributions, contributions
     }
     
+    return response
+
 }
