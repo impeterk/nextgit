@@ -1,8 +1,10 @@
-export default function Header() {
-    return(
-        <div className="border-b py-2 my-2">
+import HeaderForm from "./HeaderForm";
 
-            <h1>Hello Header</h1>
-        </div>
-    )
+export default function Header() {
+  return (
+    <div className="border-b py-2 my-2 flex justify-between">
+      <h1 className="text-3xl">Github Contributions</h1>
+      <HeaderForm />
+    </div>
+  );
 }

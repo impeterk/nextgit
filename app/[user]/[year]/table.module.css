@@ -1,19 +1,21 @@
 td {
-    @apply w-4 h-4
+  @apply w-4 h-4 m-2 border border-background;
 }
-
-td[data-level='0'] {
-    @apply bg-muted
+tr {
+  @apply bg-background;
 }
-td[data-level='1'] {
-    @apply bg-blue-800
+td[data-level="0"] {
+  @apply bg-muted;
 }
-td[data-level='2'] {
-    @apply bg-blue-700
+td[data-level="1"] {
+  @apply bg-blue-800;
 }
-td[data-level='3'] {
-    @apply bg-blue-600
+td[data-level="2"] {
+  @apply bg-blue-700;
 }
-td[data-level='4'] {
-    @apply bg-blue-500
+td[data-level="3"] {
+  @apply bg-blue-600;
+}
+td[data-level="4"] {
+  @apply bg-blue-500;
 }
