@@ -113,7 +113,7 @@ export default function Scene({
       <ambientLight color="#fff" intensity={0.4} />
       <directionalLight position={[0, 200, 200]} intensity={2} color="#fff" />
       <directionalLight position={[0, 200, -200]} color="#fff" intensity={2} />
-      <Center top position-y={150}>
+      <Center top position-y={150} position-z={-50}>
         <Text3D
           curveSegments={32}
           bevelEnabled
