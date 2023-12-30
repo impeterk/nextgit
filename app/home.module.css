@@ -1,6 +1,7 @@
 .layout {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows:auto 1fr auto;
   width: full;
   margin-inline: auto;
+  position: relative;
 }
