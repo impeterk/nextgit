@@ -1,11 +1,11 @@
 import { Suspense } from "react";
-import ContributionsTable from "./ContributionsTable";
+import Contributions from "./Contributions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Metadata, ResolvingMetadata } from "next";
 
 export const dynamic = "force-dynamic";
 
-function SkeletonTable() {
+function ContributionsSkeleton() {
   return (
     <div className="flex items-center space-x-4">
       <Skeleton className="h-12 w-12 rounded-full" />
@@ -23,7 +23,7 @@ export async function generateMetadata(
   }: {
     params: { user: string; year: string };
   },
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route paramsc
   const { user, year } = params;
@@ -41,10 +41,10 @@ export default function Page({
   const { user, year } = params;
 
   return (
-    <div className="w-fit mx-auto my-40">
-      <Suspense fallback={<SkeletonTable />}>
-        <ContributionsTable user={user} year={year} />
-      </Suspense>
+    <div className="w-fit mx-auto my-40" key={user + year}>
+      {/* <Suspense fallback={<ContributionsSkeleton />}>
+        <Contributions user={user} year={year} />
+      </Suspense> */}
     </div>
   );
 }

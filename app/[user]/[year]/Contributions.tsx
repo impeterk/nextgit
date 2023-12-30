@@ -1,13 +1,6 @@
 import { UserYear, getContributions } from "@/app/lib/contributions";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
-export default async function ContributionsTable({ user, year }: UserYear) {
+export default async function Contributions({ user, year }: UserYear) {
   let data = await getContributions({ user, year });
   return (
     <>
@@ -17,10 +10,10 @@ export default async function ContributionsTable({ user, year }: UserYear) {
       <table>
         <tbody>
           {data.contributions.map((row, index) => (
-            <tr key={index}>
-              {row.map((day) => (
+            <tr key={row[0]?.day || index}>
+              {row.map((day, index) => (
                 <td
-                  key={day?.day}
+                  key={`${day?.day || index} + ${day?.month || index}`}
                   data-level={day?.level || null}
                   className="group relative transition-all duration-500 w-4 h-4 m-2 border border-background"
                 >
