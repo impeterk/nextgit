@@ -2,7 +2,8 @@ import {redirect} from 'next/navigation'
 
 export default async function Home() {
 
-    const year = new Date().getFullYear() - 1
+    let year = new Date().getFullYear() - 1 
+    year = year >= 2023 ? year : 2023
 return  redirect(`/impeterk/${year}`)
 }
  
