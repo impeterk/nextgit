@@ -77,7 +77,7 @@ export default function Scene({ data }: { data: ({
       <Canvas className="h-full w-full">
         <Grid
           infiniteGrid
-          sectionColor="#4a4b4a"
+          sectionColor="#1e40af"
           sectionSize={20}
           cellSize={20}
           fadeDistance={800}
