@@ -10,6 +10,9 @@ import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
   title: "Next Git | Peter  Kudeláš",
   description: "Visualize your Github contributions in 3D Thank to Next.js, ThreeJS and React Three Fiber.",
+  openGraph: {
+    images: 'https://github3d.vercel.app/opengraph-image.jpg'
+  }
 
 };
 
