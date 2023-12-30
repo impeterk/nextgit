@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import Contributions from "./Contributions";
 import { Metadata, ResolvingMetadata } from "next";
 import LoadingSkeleton from "./LoadingSkeleton";
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(
   {
