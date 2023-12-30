@@ -21,9 +21,9 @@ export default function HeaderForm() {
   }
 
   return (
-    <form action={dispatch} className="flex gap-4 items-center">
+    <form action={dispatch} className="flex gap-4 items-end lg:items-center">
       <Label htmlFor="user">
-        Select Github User
+        Github User
         <Input defaultValue={user} name="user" id="user" type="text" required />
       </Label>
       <Label htmlFor="year">
