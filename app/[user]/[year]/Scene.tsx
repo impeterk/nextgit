@@ -122,7 +122,7 @@ export default function Scene({
           size={30}
           font="/Inter_Bold.json"
         >
-          {totalContributions} Contributions 
+          {totalContributions} Contributions
           <meshStandardMaterial color="azure" />
         </Text3D>
       </Center>

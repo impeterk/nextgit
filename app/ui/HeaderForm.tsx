@@ -66,7 +66,9 @@ function SubmitButton() {
       <p>{pending ? "loading ..." : "Go !"}</p>
       <span className="hidden">
 
-      { pending ? toast.loading('Loading new Data. Please wait...') : toast.dismiss()}
+      { pending ? toast.loading('Loading new Data. Please wait...', {
+        dismissible: false
+      }) : toast.dismiss()}
       </span>
     </Button>
   );
