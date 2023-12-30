@@ -4,6 +4,6 @@ import Scene from "./Scene";
 export default async function Contributions({ user, year }: UserYear) {
   let data = await getContributions({ user, year });
   return (
-      <Scene data={data.contributions} />
+      <Scene contributions={data.contributions} totalContributions={data.totalContributions} />
   );
 }

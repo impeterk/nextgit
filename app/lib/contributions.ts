@@ -61,16 +61,16 @@ function parseContributions(html: string) {
             date = date.split("-");
             const contribution: {
               count: number;
-              day: string;
+              day: number;
               month: string;
               year: string;
               level: number;
             } = {
               count: data[0] === "No" ? 0 : +data[0],
-              day: date[2],
+              day: Number(date[2]),
               month: data[3],
               year: date[0],
-              level: day.dataset.level!,
+              level: Number(day.dataset.level),
             };
             currentRow.push(contribution);
           }
@@ -82,7 +82,7 @@ function parseContributions(html: string) {
     contributions.push(currentRow);
   }
   const response = {
-    totalContributions,
+    totalContributions: Number(totalContributions),
     contributions,
   };
 
