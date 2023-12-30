@@ -15,6 +15,7 @@ export async function generateMetadata(
   const { user, year } = params;
   return {
     title: `${user} Contributions in ${year}`,
+    description: "Visualize your Github contributions in 3D Thank to Next.js, ThreeJS and React Three Fiber. Created by Peter Kudeláš",
   };
 }
 
