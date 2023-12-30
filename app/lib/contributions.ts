@@ -6,16 +6,16 @@ export interface UserYear {
 }
 
 export async function getContributions({
-  user = "impeterk",
-  year = "2023",
+  user,
+  year
 }: UserYear) {
   const html = await getRawContributions({ user, year });
   return parseContributions(html);
 }
 
 export async function getRawContributions({
-  user = "impeterk",
-  year = "2023",
+  user,
+  year
 }: UserYear) {
   const res = await fetch(
     `https://github.com/users/${user}/contributions?from=${year}-12-01&to=${year}-12-31`,

@@ -5,11 +5,12 @@ import { useFormStatus, useFormState } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
+
 
 export default function HeaderForm() {
   const params = useParams<{ user: string; year: string }>();
   const { user, year } = params;
-  // @ts-ignore
   const [_, dispatch] = useFormState(changeData, undefined);
 
   const currentYear = new Date().getFullYear();
@@ -53,13 +54,20 @@ export default function HeaderForm() {
 function SubmitButton() {
   const { pending } = useFormStatus();
 
+  
   return (
     <Button
-      className="self-end disabled:bg-slate-500"
+      variant={"outline"}
+      className="self-end disabled:bg-slate-500 w-24"
       aria-disabled={pending}
       disabled={pending}
+      
     >
-      <p>Go !</p>
+      <p>{pending ? "loading ..." : "Go !"}</p>
+      <span className="hidden">
+
+      { pending ? toast.loading('Loading new Data. Please wait...') : toast.dismiss()}
+      </span>
     </Button>
   );
 }

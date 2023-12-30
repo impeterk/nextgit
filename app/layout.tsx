@@ -5,6 +5,7 @@ import Header from "@/app/ui/Header";
 import Footer from "@/app/ui/Footer";
 import styles from "./home.module.css";
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Next Git | Peter  Kudeláš",
@@ -18,9 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} ${styles.layout} container`}>
-        <Header />
-        <main>{children}</main>
+      <body className={`${inter.className} ${styles.layout}`}>
+        <Header/>
+        <main>{children}
+      <Toaster position="top-center" />
+        </main>
         <Footer />
       </body>
     </html>

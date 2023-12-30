@@ -1,5 +1,10 @@
+import About from "./footer/About";
+
 export default function Footer() {
     return (
-        <small className="text-center py-6 text-muted-foreground">Peter Kudeláš {new Date().getFullYear()} | created with Next.js</small>
+        <footer className="container text-center bg-transparent py-6 ">
+        <small className="text-muted-foreground">Peter Kudeláš {new Date().getFullYear()} | </small>
+        <About />
+        </footer>
     )
 }

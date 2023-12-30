@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 
 export async function changeData(
-  prevState: string | undefined,
+  prevState: any,
   formData: FormData
 ) {
   const user = formData.get("user");

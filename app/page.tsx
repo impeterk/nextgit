@@ -2,6 +2,7 @@ import {redirect} from 'next/navigation'
 
 export default async function Home() {
 
-return  redirect('/impeterk/2023')
+    const year = new Date().getFullYear() - 1
+return  redirect(`/impeterk/${year}`)
 }
  
