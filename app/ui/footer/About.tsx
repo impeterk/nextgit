@@ -20,25 +20,26 @@ export default function About() {
             <DrawerTitle>About </DrawerTitle>
             <DrawerDescription>
               You can see your your contributions to GitHub in 3D. This was
-              heavily influenced and inspired by{" "}
+              heavily influenced and inspired by
               <a
                 href="https://joyofcode.xyz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-4 text-accent-foreground"
+                className="underline underline-offset-4 text-accent-foreground mx-1"
               >
                 Joy of Code
-              </a>{" "}
+              </a>
               videos about theirs implementation of Github Skyline. However I
-              have decided to create this in{" "}
+              have decided to create this in
               <a
                 href="https://nextjs.org"
-                className="underline text-accent-foreground underline-offset-4 "
+                className="underline text-accent-foreground underline-offset-4 mx-1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Next.js
               </a>
+              as my first project with this framework.
             </DrawerDescription>
           </div>
           <div className="space-y-2">
