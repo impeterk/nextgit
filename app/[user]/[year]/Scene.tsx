@@ -98,8 +98,8 @@ export default function Scene({
         cellSize={20}
         fadeDistance={800}
       />
-      <PerspectiveCamera makeDefault position={[10, 150, 400]} fov={60}>
-        <OrbitControls enableDamping autoRotate autoRotateSpeed={0.75} />
+      <PerspectiveCamera makeDefault position={[10, 150, 400]} fov={75}>
+        <OrbitControls enableDamping autoRotate autoRotateSpeed={0.65} />
       </PerspectiveCamera>
       <Stars
         radius={600}
