@@ -68,7 +68,7 @@ export default function Scene({
     switch (true) {
       case count == 0:
         return offset;
-      case count > 60:
+      case count > 40:
         return count;
       case !count:
         return 0;
@@ -113,7 +113,10 @@ export default function Scene({
       <ambientLight color="#fff" intensity={0.4} />
       <directionalLight position={[0, 200, 200]} intensity={2} color="#fff" />
       <directionalLight position={[0, 200, -200]} color="#fff" intensity={2} />
-      <Center top position-y={150} position-z={-50}>
+      
+      <Center top>
+      <Box position={[0,0,0]} height={[53*12, 50, 7*14]} level={0}>
+      <Center position-z={4*14-1}>
         <Text3D
           curveSegments={32}
           bevelEnabled
@@ -126,7 +129,9 @@ export default function Scene({
           <meshStandardMaterial color="azure" />
         </Text3D>
       </Center>
-      <Center top position={[0, 10, 0]}>
+      </Box>
+      </Center>
+      <Center top position={[0, 50, 0]}>
         {contributions.map((row: any, i: number) =>
           row.map((day: any, j: number) => (
             <animated.group

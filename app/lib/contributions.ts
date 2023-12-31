@@ -31,26 +31,23 @@ export async function getRawContributions({
 
 function parseContributions(html: string) {
   const { document } = parseHTML(html);
-
+  const calendar = document.querySelectorAll<HTMLElement>("tool-tip")
   // total constributions
-  const totalContributions = document
-    .querySelector<HTMLHeadingElement>("h2")
-    ?.innerText.split(" ")[1];
-  const calendar = document.querySelectorAll<HTMLElement>("tool-tip");
+  let totalContributions = 0
 
   const rows = document.querySelectorAll("tbody > tr");
 
-  const contributions = [];
+  const contributions:any[] = [];
 
   // @ts-ignore
   for (const row of rows) {
     const days = row.querySelectorAll("td:not(.ContributionCalendar-label)");
 
-    const currentRow = [];
+    const currentRow: any[] = [];
 
     for (const day of days) {
       const dayId = day.id;
-      let date = day.getAttribute("data-date");
+      let date: any | null = day.getAttribute("data-date");
       if (date) {
         // @ts-ignore
         for (const entry of calendar) {
@@ -58,7 +55,7 @@ function parseContributions(html: string) {
 
           let data = entry.innerText.split(" ");
           if (entryId === dayId) {
-            date = date.split("-");
+            date = date?.split("-") as string[];
             const contribution: {
               count: number;
               day: number;
@@ -70,9 +67,10 @@ function parseContributions(html: string) {
               day: Number(date[2]),
               month: data[3],
               year: date[0],
-              level: Number(day.dataset.level),
+              level: Number(day.getAttribute('data-level')),
             };
             currentRow.push(contribution);
+            totalContributions += contribution.count
           }
         }
       } else {
@@ -82,7 +80,7 @@ function parseContributions(html: string) {
     contributions.push(currentRow);
   }
   const response = {
-    totalContributions: Number(totalContributions),
+    totalContributions,
     contributions,
   };
 
