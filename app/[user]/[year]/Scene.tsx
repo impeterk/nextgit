@@ -117,6 +117,7 @@ export default function Scene({
             enableDamping
             autoRotate={autoRotate}
             autoRotateSpeed={0.65}
+            reverseHorizontalOrbit
           />
         </PerspectiveCamera>
         <Stars
