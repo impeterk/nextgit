@@ -9,11 +9,9 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Next Git | Peter Kudeláš",
-  description: "Visualize your Github contributions in 3D.Created with Next.js, ThreeJS and React Three Fiber.",
-  openGraph: {
-    images: 'https://github3d.vercel.app/opengraph-image.jpg'
-  }
-
+  description:
+    "Visualize your Github contributions in 3D.Created with Next.js, ThreeJS and React Three Fiber.",
+  metadataBase: new URL("https://github3d.vercel.app"),
 };
 
 export default function RootLayout({
@@ -24,9 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} ${styles.layout}`}>
-        <Header/>
-        <main>{children}
-      <Toaster position="top-center" />
+        <Header />
+        <main>
+          {children}
+          <Toaster position="top-center" />
         </main>
         <Footer />
       </body>
