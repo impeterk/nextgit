@@ -9,6 +9,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -45,17 +46,24 @@ export default function About() {
           <div className="space-y-2">
             <DrawerTitle>Created with</DrawerTitle>
             <DrawerDescription>
-              <div className="flex text-lg gap-4">
+              <div className="flex text-lg gap-4 items-end ">
                 <a
-                  className="underline text-accent-foreground underline-offset-4 "
+                  className="underline text-accent-foreground underline-offset-4 hover:scale-110"
                   href="https://nextjs.org"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Next js
+                  <Image
+                  src="/next.svg"
+                  height={22}
+                  width={65}
+                  alt='next logo'
+                  className="invert self-end border-b border-black pb-1.5"
+                  />
+
                 </a>
                 <a
-                  className="underline text-accent-foreground underline-offset-4 "
+                  className="underline text-accent-foreground underline-offset-4 hover:scale-110"
                   href="https://threejs.org"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -63,7 +71,7 @@ export default function About() {
                   Three js
                 </a>
                 <a
-                  className="underline text-accent-foreground underline-offset-4 "
+                  className="underline text-accent-foreground underline-offset-4 hover:scale-110"
                   href="https://docs.pmnd.rs/react-three-fiber/getting-started/introduction"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -71,7 +79,7 @@ export default function About() {
                   React Three Fiber
                 </a>
                 <a
-                  className="underline text-accent-foreground underline-offset-4 "
+                  className="underline text-accent-foreground underline-offset-4 hover:scale-110"
                   href="https://ui.shadcn.com/"
                   target="_blank"
                   rel="noopener noreferrer"

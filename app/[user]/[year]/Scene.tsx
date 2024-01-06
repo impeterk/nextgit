@@ -73,7 +73,7 @@ export default function Scene({
       case count > 40:
         return count;
       case !count:
-        return 0;
+        return 0.1;
       default:
         return count * (base + offset);
     }
@@ -139,7 +139,7 @@ export default function Scene({
         <animated.group position={[0, 0, 5]}>
           <Center top>
             <mesh>
-              <boxGeometry args={[53 * 12, 50, 7 * 14]} />
+              <boxGeometry args={[54 * 12, 50, 7 * 14]} />
               <meshLambertMaterial attach="material" color="#1E293B" />
               <Center position-z={4 * 14 - 3}>
                 <Text3D
@@ -158,15 +158,16 @@ export default function Scene({
           </Center>
         </animated.group>
         <Center top position={[0, 50, 0]}>
-          {contributions.map((row: any, i: number) =>
-            row.map((day: any, j: number) => (
+          {contributions.map((row: any, i: number) => 
+          <group key={i}>
+            {row.map((day: any, j: number) => (
               <animated.group
-                position={[0, 0, 12 * (i || 1)]}
+                position={[0, 0, 12 * i]}
                 key={`${day?.day} + ${day?.month}`}
                 scale-y={scaleY}
               >
                 <Box
-                  position={[12 * (j || 1), normalize(day?.count) / 2, 0]}
+                  position={[12 * j, normalize(day?.count) / 2, 0]}
                   height={[10, normalize(day?.count), 10]}
                   level={day?.level}
                   key={j}
@@ -188,7 +189,8 @@ export default function Scene({
                   )}
                 </Box>
               </animated.group>
-            ))
+            ))}
+            </group>
           )}
         </Center>
       </Canvas>
