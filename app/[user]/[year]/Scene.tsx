@@ -64,7 +64,7 @@ export default function Scene({
   totalContributions: number;
 }) {
   const [scale, setScale] = useState(0);
-  const [autoRotate, setAutoRotate] = useState(true);
+    const [autoRotate, setAutoRotate] = useState<boolean | undefined>(undefined);
 
   function normalize(count: number, base = 4, offset = 2) {
     switch (true) {
@@ -92,17 +92,24 @@ export default function Scene({
 
   useEffect(() => {
     setScale(1);
+    setAutoRotate(() => Boolean(Number(localStorage.getItem('auto-rotate') ?? true))  )
   }, []);
+
+  const handleAutoRotate = () => {
+    const tmp = !autoRotate
+    localStorage.setItem('auto-rotate', String(tmp ? 1 : 0))
+    setAutoRotate(() => tmp)
+  }
 
   return (
     <div className="relative h-full w-full">
-      <Button
+      {Boolean(scale) &&<Button
         className="absolute z-50 bottom-20 left-1/2 -translate-x-1/2"
         variant={"secondary"}
-        onClick={() => setAutoRotate(!autoRotate)}
+        onClick={handleAutoRotate}
       >
         Auto Rotate {autoRotate ? " ✔" : " ✖"}
-      </Button>
+      </Button>}
 
       <Canvas className="h-full w-full">
         <Grid
